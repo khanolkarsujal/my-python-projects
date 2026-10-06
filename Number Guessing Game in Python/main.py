@@ -26,11 +26,11 @@ while attempts > 0:
 
     elif guess > random_number:
         attempts -= 1
-        print(f"Try a lower number .. and have {attempts} attemps left to try ..\n")
+        print(f"Try a lower number .. and have {attempts} attempts left to try ..\n")
 
     elif guess < random_number:
         attempts -= 1
-        print(f"Try a higher number .. and you have {attempts} attemps left to try ..\n")
+        print(f"Try a higher number .. and you have {attempts} attempts left to try ..\n")
 
     if attempts == 0:
         print(f"GAME OVER.. the random number was {random_number} \n")
