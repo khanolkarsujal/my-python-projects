@@ -5,7 +5,7 @@ import random
 random_number = random.randint(1,100)
 
 # Attempts 
-attemps = 7 \
+attemps = 7 
 
 while attemps > 0:
     guess = int(input("Enter the guess number :"))
