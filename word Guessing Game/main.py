@@ -56,6 +56,8 @@ def create_str(guess_char):
         str_guess_char += letter + " "
     print(str_guess_char)
 
+create_str(guess_char)
+
 
 attempts = 7
 
