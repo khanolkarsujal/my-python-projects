@@ -1,99 +1,94 @@
-import random 
+import random
 
 
-last_digit = 1
-# generate list in sequence 
+# Computer's turn
+def computer_choice(current_number):
 
+    random_num = random.randint(1, 3)
+    computer_choice_list = []
+
+    for i in range(random_num):
+
+        if current_number > 21:
+            break
+
+        computer_choice_list.append(current_number)
+        current_number += 1
+
+    return computer_choice_list, current_number
+
+
+# User's turn
+def user_choice(current_number):
+
+    while True:
+
+        user_input = input(
+            "Enter next number(s) separated by space (1-3 numbers): "
+        )
+
+        user_input = user_input.split()
+
+        # Check number of inputs
+        if len(user_input) > 3 or len(user_input) == 0:
+            print("Try again... enter 1 to 3 numbers.")
+            continue
+
+        # Check that every input is a number
+        if not all(num.isdigit() for num in user_input):
+            print("Try again... enter numbers only.")
+            continue
+
+        # Convert strings to integers
+        user_numbers = []
+
+        for num in user_input:
+            user_numbers.append(int(num))
+
+        # Check that numbers are consecutive
+        expected_number = current_number
+
+        valid = True
+
+        for num in user_numbers:
+
+            if num != expected_number:
+                valid = False
+                break
+
+            expected_number += 1
+
+        if not valid:
+            print("Try again... enter the numbers in sequence.")
+            continue
+
+        # Valid input
+        current_number += len(user_numbers)
+
+        return current_number
+
+
+# Game starts
+current_number = 1
 
 while True:
 
+    # Computer turn
+    computer_choose, current_number = computer_choice(current_number)
 
-    def computer_choice():
+    print("Computer:", *computer_choose)
 
-        random_num = random.randint(1,3)
+    # Check game over
+    if current_number >= 21:
+        print("GAME OVER")
+        break
 
-        
-        computer_choice_list = []
+    # User turn
+    current_number = user_choice(current_number)
 
-        for i in range(random_num):
+    print("Current number:", current_number)
 
-                computer_choice_list.append(str(last_digit))
-                last_digit += 1
-
-                last_digit = computer_choice_list[-1]
-
-                
-
-
-        return computer_choice_list , last_digit
-
-    res , current = computer_choice(last_digit)
-
-    word = ""
-    for n in res:
-        word += n
-    print(f"The computer choice is :{word}")
-
-
-    last_digit = 1
-
-
-    while last_digit !=  "21":
-
-        user_num = input("Enter  next number  upto 3 :")
-
-
-
-        if user_num.isdigit() == False:
-            print("try again")
-
-            if len(user_num) > 3:
-                print("try again ... enter only upto 3 digits ")
-
-        last_num = 1
-
-
-        valid_list = []
-        for i in range(1,4):
-            valid_list.append(str(last_num))
-            last_num += 1
-
-        last_digit = valid_list[-1]
-
-
-        user_num_list = []
-        for n in user_num:
-            user_num_list.append(str(n))
-
-
-        print(user_num_list)
-
-        if user_num_list != valid_list[:len(user_num_list)]:
-            
-            print("try again.. and Enter the digits in sequence !")
-
-        if last_digit == "21":
-            print("GAME OVER")
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    # Check game over
+    if current_number >= 21:
+        print("GAME OVER")
+        break
