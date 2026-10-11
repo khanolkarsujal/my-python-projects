@@ -22,3 +22,7 @@ text = "Good morning ☀️😊"
 emoji = demoji.findall(text)
 
 print(emoji)
+
+
+
+
