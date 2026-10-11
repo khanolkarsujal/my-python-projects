@@ -26,3 +26,13 @@ def compare_pdfs(pdf1, pdf2):
     return "PDFS contain different content."
 
 print(compare_pdfs("sample.pdf" ,"sample1.pdf"))
+
+
+
+
+
+
+
+
+
+
